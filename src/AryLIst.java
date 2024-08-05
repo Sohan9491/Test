@@ -4,27 +4,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 
-//public class AryLIst {
-//    public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Enter the size of the array: ");
-//        ArrayList <Integer> list = new ArrayList <>();
-//        int n= sc.nextInt();
-//        System.out.println("Enter the elements of the array: ");
-//        for (int i = 0; i < n; i++) {
-//            list.add(n);
-//        }
-//        // Output:
-////        for(int i = 0 ; i < n ; i++){
-////            System.out.print(list.get(i)+" ");
-////        }
-//        // Alternative
-//        for(Integer i:list) {
-//            System.out.print(i+" ");
-//        }
-//    }
-//}
-
 public class AryLIst {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
