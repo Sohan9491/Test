@@ -1,0 +1,118 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ShoppingCart {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Set your User ID: ");
+        String correctUserId = scanner.nextLine();
+        System.out.print("Set your Password: ");
+        String correctPassword = scanner.nextLine();
+
+        double vatRate = 0.13;
+
+        while (true) {
+            System.out.print("User ID: ");
+            String userId = scanner.nextLine();
+            System.out.print("Password: ");
+            String password = scanner.nextLine();
+
+            if (userId.equals(correctUserId) && password.equals(correctPassword)) {
+                ArrayList<String> items = new ArrayList<>();
+                ArrayList<Double> prices = new ArrayList<>();
+
+                System.out.print("Enter the number of items: ");
+                int numItems = scanner.nextInt();
+                scanner.nextLine();
+
+                for (int i = 0; i < numItems; i++) {
+                    System.out.print("Enter name of item " + (i + 1) + ": ");
+                    items.add(scanner.nextLine());
+                    System.out.print("Enter price of item " + (i + 1) + ": ");
+                    prices.add(scanner.nextDouble());
+                    scanner.nextLine();
+                }
+
+                double total = 0;
+                for (double price : prices) {
+                    total += price;
+                }
+
+                System.out.print("Charge VAT (yes/no)? ");
+                if (scanner.nextLine().equalsIgnoreCase("yes")) {
+                    total += total * vatRate;
+                }
+
+                System.out.print("Enter discount percentage: ");
+                double discount = scanner.nextDouble();
+                scanner.nextLine();
+                total -= total * (discount / 100);
+
+                System.out.println("Total amount to be paid: " + total);
+
+                double payment = 0;
+
+                    System.out.print("Enter payment amount: ");
+                    payment += scanner.nextDouble();
+                    scanner.nextLine();
+                    if (payment < total) {
+                        while (payment < total) {
+                        System.out.println("Amount still needed: " + (total - payment));
+                            System.out.print("Enter the Additional amount:");
+                            payment += scanner.nextDouble();
+                        }
+                    }
+                double change = payment - total;
+                System.out.println("Change: " + change);
+                System.out.println("HIGHEST DENOMINATION ORDER OF CHANGE:");
+                double thousand =  change / 1000;
+                change %= 1000;
+                double _5hundred =  change / 500;
+                change %= 500;
+                double hundred =  change / 100;
+                change %= 100;
+                double fifty = change / 50;
+                change %= 50;
+                double twenty =  change / 20;
+                change %= 20;
+                double ten =  change / 10;
+                change %= 10;
+                double five =  change / 5;
+                change %= 5;
+                double one= change / 1;
+
+                if (thousand != 0) {
+                    System.out.println("1000 rupees: " + thousand);
+                }
+                if (_5hundred != 0) {
+                    System.out.println("500 rupees: " + _5hundred);
+                }
+                if (hundred != 0) {
+                    System.out.println("100 rupees: " + hundred);
+                }
+                if (fifty != 0) {
+                    System.out.println("50 rupees: " + fifty);
+                }
+                if (twenty != 0) {
+                    System.out.println("20 rupees: " + twenty);
+                }
+                if (ten != 0) {
+                    System.out.println("10 rupees: " + ten);
+                }
+                if (five != 0) {
+                    System.out.println("5 rupees: " + five);
+                }
+                if(one !=0){
+                    System.out.println("1 rupees: " + one);
+                }
+            } else {
+                System.out.println("Invalid credentials.");
+            }
+
+            System.out.println("Enter 'quit' or 'QUIT' to exit, or press Enter to continue.");
+            if (scanner.nextLine().equalsIgnoreCase("quit")) break;
+        }
+        scanner.close();
+    }
+}
